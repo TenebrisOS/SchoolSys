@@ -44,7 +44,6 @@ def draw_report(grade, age, classes, id):
     reportcanvas.pack()
 
 
-
 def on_enter(event):
     name = entry.get()
     entry.delete(0, ctk.END)
