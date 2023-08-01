@@ -1,20 +1,20 @@
 {
-  "Samy Lamlih": {
-    "id": 1,
-    "class": "5th Grade",
-    "age": 14,
-    "finalgrade": 16
-  },
-  "Houssam Lamlih": {
-    "id": 2,
-    "class": "5th Grade",
-    "age": 21,
-    "finalgrade": 17
-  },
-  "Soulaymane Lamlih": {
-    "id": 3,
-    "class": "5th Grade",
-    "age": 7,
-    "finalgrade": 8
-  }
+    "Samy Lamlih": {
+        "id": "1915615",
+        "class": "5th grade ",
+        "age": "18",
+        "finalgrade": "191962"
+    },
+    "Houssam Lamlih": {
+        "id": 2,
+        "class": "5th Grade",
+        "age": 21,
+        "finalgrade": 17
+    },
+    "Soulaymane Lamlih": {
+        "id": 3,
+        "class": "5th Grade",
+        "age": 7,
+        "finalgrade": 8
+    }
 }
