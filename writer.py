@@ -1,5 +1,6 @@
-import customtkinter as ctk
 import json
+import customtkinter as ctk
+import tkinter.messagebox as messagebox
 
 root = ctk.CTk()
 root.geometry('640x480')
@@ -12,7 +13,6 @@ def register(data):
         with open('files/student_data.json', 'r') as f:
             existing_data = json.load(f)
     except FileNotFoundError:
-        # If the file doesn't exist yet, set existing_data to an empty list or dictionary
         existing_data = {}
     existing_data.update(data)
     with open('files/student_data.json', 'w') as json_file:
@@ -21,19 +21,31 @@ def register(data):
 def register_report():
     name = entry.get()
     student_id = entry1.get()
-    student_class = entry2.get()
+    student_class = optionmenu.get()
     age = entry3.get()
     final_grade = entry4.get()
 
     studentdata = {
-            name : {
-                'id' : student_id,
-                'class' : student_class,
-                'age' : age,
-                'finalgrade' : final_grade
-            }
+        name: {
+            'id': student_id,
+            'class': student_class,
+            'age': age,
+            'finalgrade': final_grade
         }
+    }
+    
+    # checking if name already exist
+    try:
+        with open('files/student_data.json', 'r') as f:
+            existing_data = json.load(f)
+            if name in existing_data:
+                messagebox.showinfo("Error", "Student with the same name already exists.")
+                return
+    except FileNotFoundError:
+        pass  # No need to handle if the file doesn't exist yet
+
     register(studentdata)
+    messagebox.showinfo("Success", "Student report registered successfully.")
 
 label = ctk.CTkLabel(root, text="Create a student's report",
                      fg_color="transparent", font=('arial', 15))
@@ -41,23 +53,15 @@ entry = ctk.CTkEntry(master=root, width=200, font=("arial", 15), placeholder_tex
 entry.place(x=20, y=60)
 entry1 = ctk.CTkEntry(master=root, width=200, font=("arial", 15), placeholder_text="Student's ID...")
 entry1.place(x=20, y=100)
-entry2 = ctk.CTkEntry(master=root, width=200, font=("arial", 15), placeholder_text="Student's class...")
-entry2.place(x=20, y=140)
+optionmenu = ctk.CTkOptionMenu(master=root, width=200, values=["6eme", "5eme", "4eme", "3eme"], fg_color='gray', font=("arial", 15))
+optionmenu.place(x=20, y=140)
+optionmenu.set("6eme")
 entry3 = ctk.CTkEntry(master=root, width=200, font=("arial", 15), placeholder_text="Student's age...")
 entry3.place(x=20, y=180)
 entry4 = ctk.CTkEntry(master=root, width=200, font=("arial", 15), placeholder_text="Student's final grade...")
 entry4.place(x=20, y=220)
-#entry.bind("<Return>", on_enter)
 label.place(x=25, y=25)
-studentdata = {
-            entry.get() : {
-                'id' : entry1.get(),
-                'class' : entry2.get(),
-                'age' : entry3.get(),
-                'finalgrade' : entry4.get()
-            }
-        }
-button = ctk.CTkButton(master=root, width=200, text="Register Report", command=register_report)
+button = ctk.CTkButton(master=root, width=200, text="Register Report", command=register_report, font=("arial", 15))
 button.place(x=20, y=260)
 
 root.mainloop()
