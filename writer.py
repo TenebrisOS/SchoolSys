@@ -7,6 +7,7 @@ root.geometry('640x480')
 root.minsize(640, 480)
 root.maxsize(640, 480)
 root.title("SchoolSys Writer")
+root.iconbitmap("ico.ico")
 
 def register(data):
     try:

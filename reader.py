@@ -10,6 +10,7 @@ root.geometry('640x480')
 root.minsize(640, 480)
 root.maxsize(640, 480)
 root.title("SchoolSys Reader")
+root.iconbitmap("ico.ico")
 
 label = ctk.CTkLabel(root, text="Type a student's name to get his report...",
                      fg_color="transparent", font=('arial', 15))
