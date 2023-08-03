@@ -63,4 +63,5 @@ entry = ctk.CTkEntry(master=root, width=200, font=("arial", 15))
 entry.place(x=20, y=50)
 entry.bind("<Return>", on_enter)
 
+
 root.mainloop()
