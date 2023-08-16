@@ -35,11 +35,11 @@ def draw_report(grade, age, classes, id):
     finalgrade = ctk.CTkLabel(reportcanvas, text=(
         "Final Grade : " + str(grade)), fg_color="transparent", font=('arial', 20))
     finalgrade.place(x=20, y=225)
-    if grade > 10:
+    if int(grade) > 10:
         label = ctk.CTkLabel(reportcanvas, text=("Admitted !!"),
                              text_color="green", font=('arial', 40))
         label.place(x=200, y=90)
-    if grade < 10:
+    if int(grade) < 10:
         label = ctk.CTkLabel(reportcanvas, text=("Not admitted :("),
                              text_color="red", font=('arial', 40))
         label.place(x=200, y=90)
